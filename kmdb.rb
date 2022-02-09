@@ -76,88 +76,87 @@ Cast.destroy_all
 # Generate models and tables, according to the domain model
 # TODO!
 
-rails generate model Movie title:string
-rails generate model Cast name:string
+rails generate model Movie
+rails generate model Cast
 rails db:migrate
 
 # Insert data into your database that reflects the sample data shown above
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
+# Movie
 
-
-values = { title: "Batman Begins", year: "2005", rating: "PG-13", director: "Christopher Nolan" }
+values = { title: "Batman Begins", year_released: "2005", rated: "PG-13", name: "Christopher Nolan" }
 movie = Movie.new(values)
 movie.save
 
-values = { title: "The Dark Knight", year: "2008", rating: "PG-13", director: "Christopher Nolan" }
+values = { title: "The Dark Knight", year_released: "2008", rated: "PG-13", name: "Christopher Nolan" }
 movie = Movie.new(values)
 movie.save
 
-values = { title: "The Dark Knight Rises", year: "2012", rating: "PG-13", director: "Christopher Nolan" }
+values = { title: "The Dark Knight Rises", year_released: "2012", rated: "PG-13", name: "Christopher Nolan" }
 movie = Movie.new(values)
 movie.save
 
+#Cast
 
-
-
-values = { title: "Batman Begins", actor: "Christian Bale", character: "Bruce Wayne" }
+values = { title: "Batman Begins", name: "Christian Bale", character_name: "Bruce Wayne" }
 cast = Cast.new(values)
 cast.save
 
-values = { title: "Batman Begins", actor: "Michael Caine", character: "Alfred" }
+values = { title: "Batman Begins", name: "Michael Caine", character_name: "Alfred" }
 cast = Cast.new(values)
 cast.save
 
-values = { title: "Batman Begins", actor: "Liam Neeson", character: "Ra's Al Ghul" }
+values = { title: "Batman Begins", name: "Liam Neeson", character_name: "Ra's Al Ghul" }
 cast = Cast.new(values)
 cast.save
 
-values = { title: "Batman Begins", actor: "Katie Holmes", character: "Rachel Dawes" }
+values = { title: "Batman Begins", name: "Katie Holmes", character_name: "Rachel Dawes" }
 cast = Cast.new(values)
 cast.save
 
-values = { title: "Batman Begins", actor: "Gary Oldman", character: "Commissioner Gordon" }
+values = { title: "Batman Begins", name: "Gary Oldman", character_name: "Commissioner Gordon" }
 cast = Cast.new(values)
 cast.save
 
-values = { title: "The Dark Knight", actor: "Christian Bale", character: "Bruce Wayne" }
+values = { title: "The Dark Knight", name: "Christian Bale", character_name: "Bruce Wayne" }
 cast = Cast.new(values)
 cast.save
 
-values = { title: "The Dark Knight", actor: "Heath Ledger", character: "Joker" }
+values = { title: "The Dark Knight", name: "Heath Ledger", character_name: "Joker" }
 cast = Cast.new(values)
 cast.save
 
-values = { title: "The Dark Knight", actor: "Aaron Eckhart", character: "Harvey Dent" }
+values = { title: "The Dark Knight", name: "Aaron Eckhart", character_name: "Harvey Dent" }
 cast = Cast.new(values)
 cast.save
 
-values = { title: "The Dark Knight", actor: "Michael Caine", character: "Alfred" }
+values = { title: "The Dark Knight", name: "Michael Caine", character_name: "Alfred" }
 cast = Cast.new(values)
 cast.save
 
-values = { title: "The Dark Knight", actor: "Maggie Gyllenhaal", character: "Rachel Dawes" }
+values = { title: "The Dark Knight", name: "Maggie Gyllenhaal", character_name: "Rachel Dawes" }
 cast = Cast.new(values)
 cast.save
 
-values = { title: "The Dark Knight Rises", actor: "Christian Bale", character: "Bruce Wayne" }
+values = { title: "The Dark Knight Rises", name: "Christian Bale", character_name: "Bruce Wayne" }
 cast = Cast.new(values)
 cast.save
 
-values = { title: "The Dark Knight Rises", actor: "Gary Oldman", character: "Commissioner Gordon" }
+values = { title: "The Dark Knight Rises", name: "Gary Oldman", character_name: "Commissioner Gordon" }
 cast = Cast.new(values)
 cast.save
 
-values = { title: "The Dark Knight Rises", actor: "Tom Hardy", character: "Bane" }
+values = { title: "The Dark Knight Rises", name: "Tom Hardy", character_name: "Bane" }
 cast = Cast.new(values)
 cast.save
 
-values = { title: "The Dark Knight Rises", actor: "Joseph Gordon-Levitt", character: "John Blake" }
+values = { title: "The Dark Knight Rises", name: "Joseph Gordon-Levitt", character_name: "John Blake" }
 cast = Cast.new(values)
 cast.save
 
-values = { title: "The Dark Knight Rises", actor: "Anne Hathaway", character: "Selina Kyle" }
+values = { title: "The Dark Knight Rises", name: "Anne Hathaway", character_name: "Selina Kyle" }
 cast = Cast.new(values)
 cast.save
 
@@ -169,15 +168,9 @@ puts ""
 # Query the movies data and loop through the results to display the movies output
 # TODO!
 
-puts Movie.all
 movies = Movie.all
 for movie in movies
-    puts movie.name
-    title = movie.titles
-    for movie in movies
-        puts "#{title.name} #{title.year} - #{title.rating} - #{title.director}"
-end
-puts ""
+    puts "#{movie.title} - #{movie.year_released} - #{movie.rated} - #{movie.name}"
 end
 
 # Prints a header for the cast output
@@ -189,17 +182,7 @@ puts ""
 # Query the cast data and loop through the results to display the cast output for each movie
 # TODO!
 
-Puts Cast.all
 casts = Cast.all
 for cast in casts
-end
-
-casts = Cast.all
-for cast in casts
-    puts cast.name
-    actor = cast.actors
-    for cast in casts
-        puts "#{cast.movie} #{cast.actor} - #{cast.character}"
-end
-puts ""
+    puts "#{cast.title} - #{cast.name} - #{cast.character_name}"
 end
