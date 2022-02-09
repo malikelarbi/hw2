@@ -71,13 +71,15 @@
 # TODO!
 
 Movie.destroy_all
-Cast.destroy_all
+Person.destroy_all
+Role.destroy_all
 
 # Generate models and tables, according to the domain model
 # TODO!
 
 rails generate model Movie
-rails generate model Cast
+rails generate model Person
+rails generate model Role
 rails db:migrate
 
 # Insert data into your database that reflects the sample data shown above
