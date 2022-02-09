@@ -70,12 +70,96 @@
 # Use `Model.destroy_all` code.
 # TODO!
 
+Movie.destroy_all
+Cast.destroy_all
+
 # Generate models and tables, according to the domain model
 # TODO!
+
+rails generate model Movie title:string
+rails generate model Cast name:string
+rails db:migrate
 
 # Insert data into your database that reflects the sample data shown above
 # Do not use hard-coded foreign key IDs.
 # TODO!
+
+
+
+values = { movie: "Batman Begins", year: "2005", rating: "PG-13", director: "Christopher Nolan" }
+batman_begins = Movie.new(values)
+batman_begins.save
+
+values = { movie: "The Dark Knight", year: "2008", rating: "PG-13", director: "Christopher Nolan" }
+the_dark_knight = Movie.new(values)
+the_dark_knight.save
+
+values = { movie: "The Dark Knight Rises", year: "2012", rating: "PG-13", director: "Christopher Nolan" }
+the_dark_knight_rises = Movie.new(values)
+the_dark_knight_rises.save
+
+
+
+
+values = { movie: "Batman Begins", actor: "Christian Bale", character: "Bruce Wayne" }
+batman_begins = Cast.new(values)
+batman_begins.save
+
+values = { movie: "Batman Begins", actor: "Michael Caine", character: "Alfred" }
+batman_begins = Cast.new(values)
+batman_begins.save
+
+values = { movie: "Batman Begins", actor: "Liam Neeson", character: "Ra's Al Ghul" }
+batman_begins = Cast.new(values)
+batman_begins.save
+
+values = { movie: "Batman Begins", actor: "Katie Holmes", character: "Rachel Dawes" }
+batman_begins = Cast.new(values)
+batman_begins.save
+
+values = { movie: "Batman Begins", actor: "Gary Oldman", character: "Commissioner Gordon" }
+batman_begins = Cast.new(values)
+batman_begins.save
+
+values = { movie: "The Dark Knight", actor: "Christian Bale", character: "Bruce Wayne" }
+dark_knight = Cast.new(values)
+dark_knight.save
+
+values = { movie: "The Dark Knight", actor: "Heath Ledger", character: "Joker" }
+dark_knight = Cast.new(values)
+dark_knight.save
+
+values = { movie: "The Dark Knight", actor: "Aaron Eckhart", character: "Harvey Dent" }
+dark_knight = Cast.new(values)
+dark_knight.save
+
+values = { movie: "The Dark Knight", actor: "Michael Caine", character: "Alfred" }
+dark_knight = Cast.new(values)
+dark_knight.save
+
+values = { movie: "The Dark Knight", actor: "Maggie Gyllenhaal", character: "Rachel Dawes" }
+dark_knight = Cast.new(values)
+dark_knight.save
+
+values = { movie: "The Dark Knigh Rises", actor: "Christian Bale", character: "Bruce Wayne" }
+dark_knight_rises = Cast.new(values)
+dark_knight_rises.save
+
+values = { movie: "The Dark Knigh Rises", actor: "Gary Oldman", character: "Commissioner Gordon" }
+dark_knight_rises = Cast.new(values)
+dark_knight_rises.save
+
+values = { movie: "The Dark Knigh Rises", actor: "Tom Hardy", character: "Bane" }
+dark_knight_rises = Cast.new(values)
+dark_knight_rises.save
+
+values = { movie: "The Dark Knigh Rises", actor: "Joseph Gordon-Levitt", character: "John Blake" }
+dark_knight_rises = Cast.new(values)
+dark_knight_rises.save
+
+values = { movie: "The Dark Knigh Rises", actor: "Anne Hathaway", character: "Selina Kyle" }
+dark_knight_rises = Cast.new(values)
+dark_knight_rises.save
 
 # Prints a header for the movies output
 puts "Movies"
@@ -85,6 +169,16 @@ puts ""
 # Query the movies data and loop through the results to display the movies output
 # TODO!
 
+movies = Movie.all
+for movie in movies
+    puts movie.name
+    title = movie.titles
+    for movie in movies
+        puts "#{title.name} #{title.year} - #{title.rating} - #{title.director}"
+end
+puts ""
+end
+
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
@@ -93,3 +187,17 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie
 # TODO!
+
+casts = Cast.all
+for cast in casts
+end
+
+casts = Cast.all
+for cast in casts
+    puts cast.name
+    actor = cast.actors
+    for cast in casts
+        puts "#{cast.movie} #{cast.actor} - #{cast.character}"
+end
+puts ""
+end
